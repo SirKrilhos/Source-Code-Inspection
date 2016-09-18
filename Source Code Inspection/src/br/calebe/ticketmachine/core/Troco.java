@@ -41,7 +41,7 @@ class Troco {
         while (valor % 2 != 0) {
             count++;
         }
-        papeisMoeda[1] = new PapelMoeda(2, count);
+        papeisMoeda[0] = new PapelMoeda(2, count); // Trocado de papelMoeda[1] para papelMoeda[0]
     }
 
     public Iterator<PapelMoeda> getIterator() {
@@ -58,8 +58,8 @@ class Troco {
 
         @Override
         public boolean hasNext() {
-            for (int i = 6; i >= 0; i++) {
-                if (troco.papeisMoeda[i] != null) {
+            for (int i = 0; i < troco.papeisMoeda.length ; i++) { // Corrigido para i=0 ; i< troco.papeisMoeda.Length
+                 if (troco.papeisMoeda[i] != null) {
                     return true;
                 }
             }
