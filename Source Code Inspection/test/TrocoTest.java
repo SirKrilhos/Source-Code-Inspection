@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import br.calebe.ticketmachine.core.Troco;
+import java.util.Arrays;
 import java.util.Iterator;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
@@ -59,14 +60,15 @@ public class TrocoTest {
         @Test
         public void testGetIterator() {
             System.out.println("getIterator");
+            
             Troco troco = new Troco(20);
             Troco instance = troco;
-            Iterator<PapelMoeda> expResult = null;
-            Iterator<PapelMoeda> result = instance.getIterator();
-    
-            Assert.assertEquals(expResult, result);
             
-            fail("The test case is a prototype.");
+            Iterator<PapelMoeda> expResult = (Iterator<PapelMoeda>) Arrays.asList(2,5,10,20,50,100);
+            Iterator<PapelMoeda> result = instance.getIterator();
+            
+            
+            Assert.assertEquals(expResult.next(), true);
         }
     
 }
