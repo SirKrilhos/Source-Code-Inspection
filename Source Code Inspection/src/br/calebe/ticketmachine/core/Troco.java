@@ -13,20 +13,22 @@ public class Troco {
 
     public Troco(int valor) {
         int count = 0;
-       if(valor > 100){ // Adicionada a condição de se o valor inserido for maior que 100 (Senão causaria loop infinito)
-        papeisMoeda = new PapelMoeda[6];
-        
-        papeisMoeda[6] = new PapelMoeda(100,count); // Adicionado papéis moeda[6]
-     
-             while (valor % 100 != 0 ) {
+        if (valor > 100) { // Adicionada a condição de se o valor inserido for maior que 100 (Senão causaria loop infinito)
+            papeisMoeda = new PapelMoeda[6];
+
+            papeisMoeda[6] = new PapelMoeda(100, count); // Adicionado papéis moeda[6]
+
+            while (valor % 100 != 0) {
                 count++;
             }
         }
         papeisMoeda[5] = new PapelMoeda(100, count);
         count = 0;
+
         while (valor % 50 != 0) {
             count++;
         }
+
         papeisMoeda[4] = new PapelMoeda(50, count);
         count = 0;
         while (valor % 20 != 0) {
@@ -75,7 +77,7 @@ public class Troco {
         @Override
         public PapelMoeda next() {
             PapelMoeda ret = null;
-            for (int i = 6; i >= 0 ; i--) {
+            for (int i = 6; i >= 0; i--) {
                 if (troco.papeisMoeda[i] != null) {
                     ret = troco.papeisMoeda[i];
                     troco.papeisMoeda[i] = null;
