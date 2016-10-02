@@ -5,13 +5,17 @@
  */
 
 
+import br.calebe.ticketmachine.core.PapelMoeda;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import br.calebe.ticketmachine.core.Troco;
+import java.util.Iterator;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  *
@@ -52,20 +56,20 @@ public class TrocoTest {
     
     
     
-//    @Test;
-//    public void testGetIterator() {
-//        System.out.println("getIterator");
-//        Troco troco = new Troco(20);
-//        Troco instance = troco;
-//        Iterator<PapelMoeda> expResult = ;
-//        Iterator<PapelMoeda> result = instance.getIterator();
-//
-//
-//
-//
-////        assertEquals(, );
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+        @Test
+        public void testGetIterator() {
+            System.out.println("getIterator");
+            Troco troco = new Troco(20);
+            Troco instance = troco;
+            Iterator<PapelMoeda> expResult = null;
+            Iterator<PapelMoeda> result = instance.getIterator();
+    
+    
+    
+    
+            Assert.assertEquals(expResult, result);
+            // TODO review the generated test code and remove the default call to fail.
+            fail("The test case is a prototype.");
+        }
     
 }
