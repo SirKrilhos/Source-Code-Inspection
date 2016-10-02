@@ -21,7 +21,8 @@ public class PapelMoedaTeste {
     @Test
     public void checkPapelMoeda(){
        PapelMoeda pm = new PapelMoeda(20,2);
-        
+        Assert.assertEquals(20, pm.getValor());
+        Assert.assertEquals(2, pm.getQuantidade());
     }
     
     public PapelMoedaTeste() {

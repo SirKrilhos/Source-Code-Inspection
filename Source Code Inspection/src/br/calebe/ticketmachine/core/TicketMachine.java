@@ -40,6 +40,11 @@ public class TicketMachine {
         return saldo;
     }
 
+    public int getValor() { // Adicionado esse método
+        return valor;
+    }
+
+     
     public Iterator<Integer> getTroco() {
         return null;
     }

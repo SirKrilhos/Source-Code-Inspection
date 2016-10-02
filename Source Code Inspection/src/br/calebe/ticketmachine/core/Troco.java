@@ -6,15 +6,18 @@ import java.util.Iterator;
  *
  * @author Calebe de Paula Bianchini
  */
-class Troco {
+// Trocado de protected para public
+public class Troco {
 
     protected PapelMoeda[] papeisMoeda;
 
     public Troco(int valor) {
-        papeisMoeda = new PapelMoeda[6];
         int count = 0;
+       if(valor > 100){ // Adicionada a condição de se o valor inserido for maior que 100 (Senão causaria loop infinito)
+        papeisMoeda = new PapelMoeda[6];
+        
         papeisMoeda[6] = new PapelMoeda(100,count); // Adicionado papéis moeda[6]
-        if(valor > 100){ // Adicionada a condição de se o valor inserido for maior que 100 (Senão causaria loop infinito)
+     
              while (valor % 100 != 0 ) {
                 count++;
             }

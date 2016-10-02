@@ -20,11 +20,19 @@ import org.junit.Test;
  */
 public class TicketMachineTeste {
    
+    
+    @Test 
+    public void TicketMachine(){
+        TicketMachine tm = new TicketMachine(5);
+        assertEquals(5, tm.getValor()); 
+    }
+    
     @Test
     public void inserir() throws PapelMoedaInvalidaException{
         TicketMachine tm = new TicketMachine(5);
         tm.inserir(20);
-        assertEquals(20,tm.getSaldo(),2);
+        assertEquals(20,tm.getSaldo());
+        
     }
     
     @Test
