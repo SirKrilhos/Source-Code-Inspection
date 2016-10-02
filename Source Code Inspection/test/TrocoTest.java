@@ -64,9 +64,6 @@ public class TrocoTest {
             Iterator<PapelMoeda> expResult = null;
             Iterator<PapelMoeda> result = instance.getIterator();
     
-    
-    
-    
             Assert.assertEquals(expResult, result);
             
             fail("The test case is a prototype.");
