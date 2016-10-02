@@ -28,12 +28,13 @@ public class TicketMachine {
                 this.saldo += quantia; // Essa parte precisa estar dentro desse método.
                 System.out.println("Nota Válida"); // Adicionado essa linha
             }
+            
         }
-        if (!achou) {
+        if (achou == false) {
             throw new PapelMoedaInvalidaException();
         }
         
-        return quantia;
+        return this.saldo;
     }
 
     public int getSaldo() {
@@ -53,10 +54,11 @@ public class TicketMachine {
         if (saldo < valor) {
             throw new SaldoInsuficienteException();
         }
+//      Toda estrutura abaixo foi comentada para efeito de teste do método
 //        String result = "*****************\n";
 //        result += "*** R$ " + saldo + ",00 ****\n";
 //        result += "*****************\n";
-          String result = "R$"+saldo;
+          String result = "R$"+saldo; 
         return result;
     }
 }

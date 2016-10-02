@@ -19,47 +19,66 @@ import org.junit.Test;
  * @author 31517900
  */
 public class TicketMachineTeste {
-   
-    
-    @Test 
-    public void TicketMachine(){
-        TicketMachine tm = new TicketMachine(5);
-        assertEquals(5, tm.getValor()); 
-    }
-    
+
     @Test
-    public void inserir() throws PapelMoedaInvalidaException{
+    public void TicketMachine() {
+        TicketMachine tm = new TicketMachine(5);
+        assertEquals(5, tm.getValor());
+    }
+
+    @Test
+    public void inserir() throws PapelMoedaInvalidaException {
         TicketMachine tm = new TicketMachine(5);
         tm.inserir(20);
-        assertEquals(20,tm.getSaldo());
-        
+        assertEquals(20, tm.getSaldo());
+        tm.inserir(5); // Já temos 20 de saldo , vamos adicionar mais 5, mas só funciona com uma nota válida
+        assertEquals(25, tm.getSaldo());
+
+//        O teste abaixo não passaria e geraria erro
+//        tm.inserir(3);
+//        assertEquals(28,tm.getSaldo());
     }
-    
+
     @Test
-    public void imprimir() throws PapelMoedaInvalidaException, SaldoInsuficienteException{
-      TicketMachine tm = new TicketMachine(5);
-      tm.inserir(20);
-      tm.imprimir();
-      assertEquals("R$20",tm.imprimir());
-       
-      
+    public void imprimir() throws PapelMoedaInvalidaException, SaldoInsuficienteException {
+        TicketMachine tm = new TicketMachine(5);
+        tm.inserir(20);
+        tm.inserir(50);
+        System.out.println(tm.imprimir());
+        assertEquals("R$70", tm.imprimir());
+    }
+
+    @Test
+    //Esse método representa um exemplo da exception SaldoInsuficiente onde o valor inserido é menor que o valor do bilhete
+    public void SaldoInsuficiente() throws PapelMoedaInvalidaException, SaldoInsuficienteException {
+        TicketMachine tm = new TicketMachine(10);
+        tm.inserir(5);
+        System.out.println(tm.imprimir());
+        assertEquals("R$5", tm.imprimir());
+
     }
     
+    @Test 
+    public void NotaInvalida() throws PapelMoedaInvalidaException{
+        TicketMachine tm = new TicketMachine(10);
+        assertEquals(3,tm.inserir(3),2);
+    }
+
     public TicketMachineTeste() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -69,7 +88,4 @@ public class TicketMachineTeste {
     //
     // @Test
     // public void hello() {}
-    
-    
-    
 }
