@@ -11,18 +11,18 @@ import java.util.Iterator;
 public class TicketMachine {
 
     protected int valor;
-    protected double saldo; // Saldo nem sempre vai ser inteiro
+    protected int saldo;
     protected int[] papelMoeda = {2, 5, 10, 20, 50, 100};
 
     public TicketMachine(int valor) {
         this.valor = valor;
-        this.saldo = 0.0; //Saldo virou double 0 = 0.0
+        this.saldo = 0;
     }
-
-    public void inserir(int quantia) throws PapelMoedaInvalidaException {
+//&& !achou
+    public double inserir(int quantia) throws PapelMoedaInvalidaException {
         System.out.println("Aguarde alguns instantes"); // Adicionado essa linha
         boolean achou = false;
-        for (int i = 0; i < papelMoeda.length; i++) { //Sem necessidade de && !achou
+        for (int i = 0; i < papelMoeda.length ; i++) { 
             if (papelMoeda[i] == quantia) { // Trocado papelMoeda[1] para [i]
                 achou = true;
                 this.saldo += quantia; // Essa parte precisa estar dentro desse método.
@@ -33,14 +33,14 @@ public class TicketMachine {
             throw new PapelMoedaInvalidaException();
         }
         
-        
+        return quantia;
     }
 
-    public double getSaldo() {  // Saldo nem sempre vai ser inteiro
+    public int getSaldo() {
         return saldo;
     }
 
-    public Iterator<Double> getTroco() { // Mudar troco pra double 
+    public Iterator<Integer> getTroco() {
         return null;
     }
 
@@ -48,9 +48,10 @@ public class TicketMachine {
         if (saldo < valor) {
             throw new SaldoInsuficienteException();
         }
-        String result = "*****************\n";
-        result += "*** R$ " + saldo + ",00 ****\n";
-        result += "*****************\n";
+//        String result = "*****************\n";
+//        result += "*** R$ " + saldo + ",00 ****\n";
+//        result += "*****************\n";
+          String result = "R$"+saldo;
         return result;
     }
 }

@@ -13,8 +13,11 @@ class Troco {
     public Troco(int valor) {
         papeisMoeda = new PapelMoeda[6];
         int count = 0;
-        while (valor % 100 != 0) {
-            count++;
+        papeisMoeda[6] = new PapelMoeda(100,count); // Adicionado papéis moeda[6]
+        if(valor > 100){ // Adicionada a condição de se o valor inserido for maior que 100 (Senão causaria loop infinito)
+             while (valor % 100 != 0 ) {
+                count++;
+            }
         }
         papeisMoeda[5] = new PapelMoeda(100, count);
         count = 0;
@@ -41,7 +44,7 @@ class Troco {
         while (valor % 2 != 0) {
             count++;
         }
-        papeisMoeda[0] = new PapelMoeda(2, count); // Trocado de papelMoeda[1] para papelMoeda[0]
+        papeisMoeda[1] = new PapelMoeda(2, count);
     }
 
     public Iterator<PapelMoeda> getIterator() {
@@ -58,8 +61,8 @@ class Troco {
 
         @Override
         public boolean hasNext() {
-            for (int i = 0; i < troco.papeisMoeda.length ; i++) { // Corrigido para i=0 ; i< troco.papeisMoeda.Length
-                 if (troco.papeisMoeda[i] != null) {
+            for (int i = 6; i >= 0; i++) {
+                if (troco.papeisMoeda[i] != null) {
                     return true;
                 }
             }
@@ -69,7 +72,7 @@ class Troco {
         @Override
         public PapelMoeda next() {
             PapelMoeda ret = null;
-            for (int i = 0; i < troco.papeisMoeda[i] && ret != null; i++) {
+            for (int i = 6; i >= 0 && ret != null; i++) {
                 if (troco.papeisMoeda[i] != null) {
                     ret = troco.papeisMoeda[i];
                     troco.papeisMoeda[i] = null;
